@@ -1,0 +1,5 @@
+// để đọc cấu hình  vụ của prettiercc
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

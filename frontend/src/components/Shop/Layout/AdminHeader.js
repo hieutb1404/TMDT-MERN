@@ -13,7 +13,11 @@ function AdminHeader() {
     <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
         <Link to="/dashboard">
-          <img src="https://shopo.quomodothemes.website/assets/images/logo.svg" alt="" />
+          <img
+            src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
+            alt=""
+            className="w-[160px] h-[160px]"
+          />
         </Link>
       </div>
 

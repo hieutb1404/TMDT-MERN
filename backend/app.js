@@ -2,6 +2,7 @@ const express = require("express");
 const ErrorHandler = require("./middleware/error");
 const app = express();
 //add thư viện vào biến app
+//  sử dụng để phân tích cú pháp cookie
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");

@@ -35,5 +35,8 @@ const routers = {
   faq: '/faq',
   // admin
   admin_dashboard: '/admin/dashboard',
+  admin_all_users: '/admin-users',
+  admin_all_sellers: '/admin-sellers',
+  admin_all_orders: '/admin-orders',
 };
 export default routers;

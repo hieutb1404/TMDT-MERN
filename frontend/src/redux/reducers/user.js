@@ -74,6 +74,20 @@ export const userReducer = createReducer(initialState, {
     // state.error được đặt thành null để xóa thông báo lỗi hiện tại.
     state.successMessage = null;
   },
+
+  // get all users -- admin
+  getAllUsersRequest: (state) => {
+    state.usersLoading = true;
+  },
+  getAllUsersSuccess: (state, action) => {
+    state.usersLoading = false;
+    state.users = action.payload;
+  },
+  getAllUsersFailed: (state, action) => {
+    state.usersLoading = false;
+    state.error = action.payload;
+  },
+
   // Hành động được gọi để xóa lỗi.
   clearError: (state, action) => {
     // state.error được đặt thành null để xóa thông báo lỗi hiện tại.

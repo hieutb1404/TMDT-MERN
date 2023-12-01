@@ -37,6 +37,7 @@ import TrackOrderPage from '~/pages/TrackOrderPage';
 import UpdateProduct from '~/components/Shop/UpdateProduct';
 import UserInbox from '~/pages/UserInbox';
 import AdminDashboardPage from '~/pages/AdminDashboardPage';
+import { AdminDashboardOrders, AdminDashboardSellers, AdminDashboardUsers } from './AdminRouters';
 const publicRouters = [
   // nếu không muốn hiện header , footer thì cho layout = null , nghĩa là layout sẽ = trống
   { path: Config.routers.login, component: LoginPage, layout: null },
@@ -77,6 +78,9 @@ const publicRouters = [
   //admin
 
   { path: Config.routers.admin_dashboard, component: AdminDashboardPage, layout: null },
+  { path: Config.routers.admin_all_users, component: AdminDashboardUsers, layout: null },
+  { path: Config.routers.admin_all_sellers, component: AdminDashboardSellers, layout: null },
+  { path: Config.routers.admin_all_orders, component: AdminDashboardOrders, layout: null },
 ];
 const privateRouters = [];
 

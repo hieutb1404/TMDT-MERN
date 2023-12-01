@@ -100,7 +100,7 @@ function Header({ activeHeading }) {
               <img
                 src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
                 alt=""
-                className="w-[160px] h-[160px]"
+                className="w-[160px] h-[70px]"
               />
             </Link>
           </div>

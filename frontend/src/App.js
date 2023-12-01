@@ -170,6 +170,21 @@ function App() {
                         <Page />
                       </ProtectedAdminRouter>
                     )}
+                    {route.path === '/admin-users' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
+                    {route.path === '/admin-sellers' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
+                    {route.path === '/admin-orders' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
 
                     {route.path !== '/checkout' &&
                       route.path !== '/profile' &&
@@ -192,6 +207,9 @@ function App() {
                       route.path !== '/product/update/:id' &&
                       // admin
                       route.path !== '/admin/dashboard' &&
+                      route.path !== '/admin-sellers' &&
+                      route.path !== '/admin-users' &&
+                      route.path !== '/admin-orders' &&
                       route.path !== '/payment' && <Page />}
                   </Layout>
                 }

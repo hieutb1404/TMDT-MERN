@@ -185,6 +185,21 @@ function App() {
                         <Page />
                       </ProtectedAdminRouter>
                     )}
+                    {route.path === '/admin-products' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
+                    {route.path === '/admin-events' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
+                    {route.path === '/admin-withdraw-request' && (
+                      <ProtectedAdminRouter>
+                        <Page />
+                      </ProtectedAdminRouter>
+                    )}
 
                     {route.path !== '/checkout' &&
                       route.path !== '/profile' &&
@@ -210,6 +225,9 @@ function App() {
                       route.path !== '/admin-sellers' &&
                       route.path !== '/admin-users' &&
                       route.path !== '/admin-orders' &&
+                      route.path !== '/admin-products' &&
+                      route.path !== '/admin-events' &&
+                      route.path !== '/admin-withdraw-request' &&
                       route.path !== '/payment' && <Page />}
                   </Layout>
                 }

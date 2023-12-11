@@ -91,7 +91,7 @@ function ProfileSidebar({ active, setActive }) {
           >
             <TbAddressBook size={20} color={active === 7 ? 'red' : ''} />
             <span className={`pl-3 ${active === 7 ? 'text-[red]' : null} 800px:block hidden`}>
-              Admin
+              Admin Dashboard
             </span>
           </div>
         </Link>

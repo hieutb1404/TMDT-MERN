@@ -38,5 +38,8 @@ const routers = {
   admin_all_users: '/admin-users',
   admin_all_sellers: '/admin-sellers',
   admin_all_orders: '/admin-orders',
+  admin_all_products: '/admin-products',
+  admin_all_events: '/admin-events',
+  admin_all_withdraw: '/admin-withdraw-request',
 };
 export default routers;

@@ -16,23 +16,13 @@ function DashboardHero() {
   const { seller } = useSelector((state) => state.seller);
 
   const { products } = useSelector((state) => state.products);
-  const [deliveredOrder, setDeliveredOrder] = useState(null);
 
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
     dispatch(getAllProductsShop(seller._id));
-
-    const orderData = orders && orders.filter((item) => item.status === 'Delivered');
-    setDeliveredOrder(orderData);
   }, [dispatch]);
 
-  const totalEarningWithoutTax = deliveredOrder
-    ? deliveredOrder.reduce((acc, item) => acc + item.totalPrice, 0)
-    : 0;
-
-  // tong tien shop ban duoc admin se an 10% nen o day t nhan voi 0.1
-  const serviceCharge = totalEarningWithoutTax * 0.1 || 0;
-  const availableBalance = totalEarningWithoutTax - serviceCharge.toFixed(2) || 0;
+  const availableBalance = seller?.availableBalance.toFixed(2);
 
   // mảng chứa các đối tượng cấu hình cho mỗi cột trong thu vien DataGrid
   const columns = [

@@ -1,3 +1,4 @@
+import AllWithdraw from '~/components/Admin/AllWithdraw';
 import AdminSideBar from '~/components/Admin/Layout/AdminSideBar';
 import AdminHeader from '~/components/Shop/Layout/AdminHeader';
 
@@ -10,7 +11,7 @@ function AdminDashboardWithdraw() {
           <div className="w-[80px] 800px:w-[330px]">
             <AdminSideBar active={7} />
           </div>
-          {/* <AllSellers /> */}
+          <AllWithdraw />
         </div>
       </div>
     </div>

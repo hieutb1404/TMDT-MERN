@@ -52,7 +52,7 @@ router.post(
   })
 );
 
-// get all messages with conversation
+// get all messages with conversation id
 router.get(
   "/get-all-messages/:id",
   catchAsyncErrors(async (req, res, next) => {

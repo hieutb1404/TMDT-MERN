@@ -13,7 +13,7 @@ const ENDPOINT = 'http://localhost:4000/';
 const socketId = socketIO(ENDPOINT, { transports: ['websocket'] });
 
 function DashboardMessage() {
-  const { seller } = useSelector((state) => state.seller);
+  const { seller, isLoading } = useSelector((state) => state.seller);
   const [conversations, setConversations] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [currentChat, setCurrentChat] = useState();
@@ -45,7 +45,7 @@ function DashboardMessage() {
 
   useEffect(() => {
     axios
-      .get(`${server}/conversation/get-all-conversation-seller/${seller._id}`, {
+      .get(`${server}/conversation/get-all-conversation-seller/${seller?._id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -55,7 +55,7 @@ function DashboardMessage() {
 
   useEffect(() => {
     if (seller) {
-      const userId = seller._id;
+      const userId = seller?._id;
 
       socketId.emit('addUser', userId);
       socketId.on('getUsers', (data) => {
@@ -77,7 +77,7 @@ function DashboardMessage() {
   useEffect(() => {
     const getMessage = async () => {
       try {
-        const response = await axios.get(`${server}/message/get-all-messages/${currentChat._id}`);
+        const response = await axios.get(`${server}/message/get-all-messages/${currentChat?._id}`);
         setMessages(response.data.messages);
       } catch (error) {
         console.log(error);
@@ -96,10 +96,10 @@ function DashboardMessage() {
       conversationId: currentChat._id,
     };
 
-    const receiverId = currentChat.members.find((member) => member.id !== seller._id);
+    const receiverId = currentChat.members.find((member) => member.id !== seller?._id);
 
     socketId.emit('sendMessage', {
-      senderId: seller._id,
+      senderId: seller?._id,
       receiverId,
       text: newMessage,
     });
@@ -210,6 +210,7 @@ function DashboardMessage() {
                 userData={userData}
                 online={onlineCheck(item)}
                 setActiveStatus={setActiveStatus}
+                isLoading={isLoading}
               />
             ))}
         </>
@@ -242,6 +243,7 @@ const MessageList = ({
   userData,
   online,
   setActiveStatus,
+  isLoading,
 }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
@@ -294,11 +296,12 @@ const MessageList = ({
       <div className="pl-3">
         <h1 className=" text-[18px]">{user?.name}</h1>
         <p className="text-[16px] text-[#000c]">
-          {/* neu id update tin nhan cuoi cung  khac voi id user thi se la phia seller nhan  */}
-          {/* nguoc lai id update tin nhan cuoi cung = vs user id thi la user nhan tin */}
-          {/* điều kiện sẽ trả về một chuỗi mới được tạo bằng cách lấy ký tự đầu tiên của tên người dùng (userData.name) và thêm dấu hai chấm. Ví dụ, nếu tên người dùng là "John", thì chuỗi này có thể trở thành "J: ". */}
-          {data?.lastMessageId !== user?._id ? 'You: ' : user?.name.split('')[0] + ': '}
-          {data?.lastMessage}
+          <p className="text-[16px] text-[#000c]">
+            {!isLoading && data?.lastMessageId !== user?._id
+              ? 'You:'
+              : user?.name.split(' ')[0] + ': '}{' '}
+            {data?.lastMessage}
+          </p>
         </p>
       </div>
     </div>

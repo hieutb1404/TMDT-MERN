@@ -141,7 +141,7 @@ function Header({ activeHeading }) {
           </div>
 
           <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? '/dashboard' : 'shop_create'}`}>
+            <Link to={`${isSeller ? '/dashboard' : 'shop-create'}`}>
               <h1 className="text-[#fff] flex items-center">
                 {isSeller ? 'Go Dashboard' : 'Become Seller'}
                 <IoIosArrowForward className="ml-1" />
@@ -258,9 +258,9 @@ function Header({ activeHeading }) {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
                 alt=""
-                className="mt-3 cursor-pointer"
+                className=" cursor-pointer w-[160px] h-[70px]"
               />
             </Link>
           </div>

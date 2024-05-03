@@ -12,10 +12,10 @@ function CountDown({ data }) {
     }, 1000);
   
     if (
-      typeof timeLeft.days === 'undefined' &&
-      typeof timeLeft.hours === 'undefined' &&
-      typeof timeLeft.minutes === 'undefined' &&
-      typeof timeLeft.seconds === 'undefined'
+       timeLeft.days === 'undefined' &&
+       timeLeft.hours === 'undefined' &&
+       timeLeft.minutes === 'undefined' &&
+       timeLeft.seconds === 'undefined'
     ) {
       axios.delete(`${server}/event/delete-shop-event/${data?._id}`);
     }

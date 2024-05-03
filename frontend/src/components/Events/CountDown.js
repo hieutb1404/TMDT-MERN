@@ -1,26 +1,40 @@
 import { useEffect, useState } from 'react';
+import axios from "axios";
+import { server } from '~/server';
 
 function CountDown({ data }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-
+  
+    if (
+      typeof timeLeft.days === 'undefined' &&
+      typeof timeLeft.hours === 'undefined' &&
+      typeof timeLeft.minutes === 'undefined' &&
+      typeof timeLeft.seconds === 'undefined'
+    ) {
+      axios.delete(`${server}/event/delete-shop-event/${data?._id}`);
+    }
+    
+  
     return () => clearTimeout(timer);
-  });
+  }); // Thêm timeLeft vào danh sách dependencies
+  
 
   function calculateTimeLeft() {
     // const difference = +new Date(data.Finish_Date) - +new Date(); tính toán sự khác biệt thời gian bằng cách lấy thời gian kết thúc (Finish_Date) và trừ đi thời gian hiện tại. Kết quả difference sẽ cho biết thời gian còn lại hoặc thời gian đã trôi qua giữa thời điểm kết thúc và thời điểm hiện tại. Nếu difference là một số dương, thì nó biểu thị thời gian còn lại, và nếu difference là một số âm, thì nó biểu thị thời gian đã trôi qua.
-    const difference = +new Date(data.Finish_Date) - +new Date();
+    const difference = +new Date(data?.Finish_Date) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
@@ -35,7 +49,7 @@ function CountDown({ data }) {
     // interval để truy cập vào thuộc tính tương ứng của timeLeft. Ví dụ, nếu interval là 'days', thì {timeLeft[interval]} sẽ hiển thị giá trị của days trong timeLeft.
     return (
       <span className="text-[25px] text-[#475ad2]">
-        {timeLeft[interval]} {interval} {''}
+        {timeLeft[interval]} {interval} {' '}
       </span>
     );
   });

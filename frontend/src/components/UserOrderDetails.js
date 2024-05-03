@@ -96,13 +96,13 @@ function UserOrderDetails() {
               </h5>
             </div>
             {/* nếu review rồi thì thôi, chưa thì review chỉ đc 1 lần rewview thoi */}
-            {item.isReviewed || item.status !== 'Delivered' ? null : (
-              <div
+            {!item.isReviewed && data?.status === "Delivered" ?  <div
                 className={`${styles.button} text-[#fff]`}
                 onClick={() => setOpen(true) || setSelectedItem(item)}
               >
                 Write a review
-              </div>
+              </div> : (
+             null
             )}
           </div>
         ))}

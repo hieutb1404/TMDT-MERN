@@ -18,7 +18,7 @@ app.use(express.json());
 // lưu ý ở đây nó có thể lấy bất cứ URL lạ nào khác ngoài URL gốc
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:43928"], // Địa chỉ nguồn gốc của yêu cầu
+    origin: "http://localhost:3000", // Chỉ chấp nhận yêu cầu từ địa chỉ này
     credentials: true,
   })
 );

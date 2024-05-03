@@ -20,6 +20,12 @@ const AdminDashboardMain = () => {
     dispatch(getAllSellers());
   }, []);
 
+
+  const adminEarning = adminOrders && adminOrders.reduce((acc,item) => acc + item.totalPrice * .10, 0);
+
+
+  const adminBalance = adminEarning?.toFixed(2);
+
   const columns = [
     { field: 'id', headerName: 'Order ID', minWidth: 150, flex: 0.7 },
 
@@ -85,7 +91,7 @@ const AdminDashboardMain = () => {
                   Total Earning
                 </h3>
               </div>
-              <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">$ {}</h5>
+              <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">$ {adminBalance}</h5>
             </div>
 
             <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">

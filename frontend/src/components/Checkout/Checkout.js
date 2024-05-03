@@ -59,7 +59,7 @@ function Checkout() {
   //this is shipping cost variable (shipping khi tri gia bien doi)
 
   // gia ship
-  const shipping = subTotalPrice * 0.01;
+  const shipping = subTotalPrice * 0.1;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,7 +93,8 @@ function Checkout() {
     });
   };
 
-  const discountPercentenge = couponCodeData ? discountPrice / 100 : '';
+  const discountPercentenge = couponCodeData ? discountPrice : "";
+
 
   const totalPrice = couponCodeData
     ? (subTotalPrice + shipping - discountPercentenge).toFixed(2)

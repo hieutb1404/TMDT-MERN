@@ -14,17 +14,15 @@ function ProductPage() {
   const { allProducts } = useSelector((state) => state.products);
 
   useEffect(() => {
-    //hông có query parameter 'category' trong URL), bạn sẽ sắp xếp productData theo số lượng bán hàng (total_sell) và lưu kết quả vào state data
-    // nghia la lay ra toan bo san pham theo gia tien cao den thap
     if (categoryData === null) {
-      const d = allProducts && allProducts.sort((a, b) => a.sold_out - b.sold_out);
+      const d = allProducts;
       setData(d);
     } else {
-      // nguoc lai khi url co query parameter ? thi se loc category do voi san pham chua' category do'
-      const d = allProducts && allProducts.filter((i) => i.category === categoryData);
+      const d =
+      allProducts && allProducts.filter((i) => i.category === categoryData);
       setData(d);
     }
-    // window.scrollTo(0, 0);
+    //    window.scrollTo(0,0);
   }, [allProducts]);
 
   return (

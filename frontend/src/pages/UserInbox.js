@@ -10,7 +10,7 @@ import { useEffect, useState, useRef } from 'react';
 import { TfiGallery } from 'react-icons/tfi';
 import { AiOutlineArrowRight, AiOutlineSend } from 'react-icons/ai';
 
-const ENDPOINT = 'http://localhost:4000/';
+const ENDPOINT = 'http://localhost:4000';
 const socketId = socketIO(ENDPOINT, { transports: ['websocket'] });
 
 function UserInbox() {
@@ -346,6 +346,7 @@ const SellerInbox = ({
         {messages &&
           messages.map((item, index) => (
             <div
+            key={index}
               className={`flex w-full my-2 ${
                 item.sender === sellerId ? 'justify-end' : 'justify-start'
               }`}

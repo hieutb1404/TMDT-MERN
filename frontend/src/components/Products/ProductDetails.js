@@ -89,14 +89,13 @@ function ProductDetails({ data }) {
           sellerId,
         })
         .then((res) => {
-          // sau khi thanh cong ta phan hoi du lieu de lay id conversation
-          navigate(`/conversation/${res.data.conversation._id}`);
+          navigate(`/inbox?${res.data.conversation._id}`);
         })
         .catch((error) => {
           toast.error(error.response.data.message);
         });
     } else {
-      toast.error('Please login to create a conversation');
+      toast.error("Please login to create a conversation");
     }
   };
 

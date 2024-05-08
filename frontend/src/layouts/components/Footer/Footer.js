@@ -26,11 +26,8 @@ function Footer() {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
         <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
-          <img
-            src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-            alt=""
-            style={{ filter: 'brightness(0) invert(1) ' }}
-          />
+         
+          <img src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg" alt="" class="w-[160px] h-[70px]"></img>
           <br />
           <p>The home and elements needeed to create beautiful products</p>
           <div className="flex items-center mt-[15px]">

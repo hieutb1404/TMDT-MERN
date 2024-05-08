@@ -67,26 +67,21 @@ export const deleteEvent = (id) => async (dispatch) => {
 };
 
 // get all events
-// get all events
 export const getAllEvents = () => async (dispatch) => {
   try {
     dispatch({
       type: "getAlleventsRequest",
     });
 
-    const response = await axios.get(`${server}/event/get-all-events`);
-    if (response && response.data) {
-      dispatch({
-        type: "getAlleventsSuccess",
-        payload: response.data.events,
-      });
-    } else {
-      throw new Error("Invalid response format");
-    }
+    const { data } = await axios.get(`${server}/event/get-all-events`);
+    dispatch({
+      type: "getAlleventsSuccess",
+      payload: data.events,
+    });
   } catch (error) {
     dispatch({
       type: "getAlleventsFailed",
-      payload: error.response ? error.response.data.message : error.message,
+      payload: error.response.data.message,
     });
   }
 };

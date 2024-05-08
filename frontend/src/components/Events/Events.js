@@ -7,25 +7,35 @@ function Events() {
   
   return (
     <div>
-      {!isLoading && (
+     {
+      !isLoading && (
         <div className={`${styles.section}`}>
-          <div className={`${styles.heading}`}>
-            <h1>Populer Events</h1>
-          </div>
+      <div className={`${styles.heading}`}>
+        <h1>Popular Events</h1>
+      </div>
 
-          <div className="w-full grid">
-            {allEvents && allEvents.length !== 0 ? (
-              allEvents.map((event, index) => (
-                <EventCard key={index} active={true} data={event} />
-              ))
-            ) : (
-              <h4>No Events available!</h4>
-            )}
-          </div>
-        </div>
-      )}
+      <div className="w-full grid">
+         {
+          allEvents.length !== 0  ? (
+            <EventCard active={true} data={allEvents && allEvents[0]} />
+          ) : (
+            <EventCard active={true} data={null} />
+          )
+         }
+         <h4>{
+           allEvents?.length === 0 && (
+            'No Events have!'
+           )
+          }
+
+         </h4>
+      </div>
+     
     </div>
-  );
+      )
+     }
+  </div>
+  )
 }
 
 export default Events;

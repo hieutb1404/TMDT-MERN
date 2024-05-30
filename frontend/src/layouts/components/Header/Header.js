@@ -14,6 +14,7 @@ import { backend_url } from '~/server';
 import Cart from '~/components/Cart/Cart';
 import Wishlist from '~/components/Wishlist/Wishlist';
 import { RxCross1 } from 'react-icons/rx';
+import ShopMartial from '~/Assests/animations/shopmart.png';
 
 function Header({ activeHeading }) {
   // state được lấy ra bởi vì store export ra toàn cục component
@@ -98,9 +99,9 @@ function Header({ activeHeading }) {
           <div>
             <Link to="/">
               <img
-                src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
+                src={ShopMartial}
                 alt=""
-                className="w-[160px] h-[70px]"
+                className="w-[100px] h-[70px]"
               />
             </Link>
           </div>
@@ -257,10 +258,10 @@ function Header({ activeHeading }) {
 
           <div>
             <Link to="/">
-              <img
-                src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
+            <img
+                src={ShopMartial}
                 alt=""
-                className=" cursor-pointer w-[160px] h-[70px]"
+                className="w-[100px] h-[70px]"
               />
             </Link>
           </div>

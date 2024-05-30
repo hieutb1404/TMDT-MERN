@@ -9,6 +9,14 @@ import { Link } from 'react-router-dom';
 import { getAllOrdersOfShop } from '~/redux/actions/Order';
 import { getAllProductsShop } from '~/redux/actions/Product';
 import styles from '~/styles/styles';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale, PointElement, LineElement, BarElement, CategoryScale } from 'chart.js';
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(ArcElement, Tooltip, Legend, LinearScale, PointElement, LineElement, BarElement, CategoryScale);
+
+
+
+
 
 function DashboardHero() {
   const dispatch = useDispatch();
@@ -23,6 +31,9 @@ function DashboardHero() {
   }, [dispatch]);
 
   const availableBalance = seller?.availableBalance.toFixed(2);
+
+
+  
 
   // mảng chứa các đối tượng cấu hình cho mỗi cột trong thu vien DataGrid
   const columns = [
@@ -91,9 +102,71 @@ function DashboardHero() {
       });
     });
 
+    // Chuyển đổi dữ liệu đơn hàng thành định dạng cho biểu đồ
+  const orderData = orders.map(order => ({
+    date: new Date(order.createAt).toLocaleDateString(),
+    amount: order.totalPrice,
+  }));
+
+  const dates = orderData.map(data => data.date);
+  const amounts = orderData.map(data => data.amount);
+
+  // Cấu hình dữ liệu cho các biểu đồ
+  const lineChartData = {
+    labels: dates,
+    datasets: [
+      {
+        label: 'Order Amount',
+        data: amounts,
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+      },
+    ],
+  };
+
+  const barChartData = {
+    labels: dates,
+    datasets: [
+      {
+        label: 'Order Amount',
+        data: amounts,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const doughnutChartData = {
+    labels: dates,
+    datasets: [
+      {
+        label: 'Order Amount',
+        data: amounts,
+        backgroundColor: dates.map(() => 'rgba(75, 192, 192, 0.2)'),
+      },
+    ],
+  };
+    
   return (
     <div className="w-full p-8">
-      <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
+    <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
+    <div className="flex flex-wrap justify-between items-start gap-4">
+      <div className="flex-1 min-w-[300px]">
+        <h2>Line Chart Example</h2>
+        <Line data={lineChartData} />
+      </div>
+      <div className="flex-1 min-w-[300px]">
+        <h2>Bar Chart Example</h2>
+        <Bar data={barChartData} />
+      </div>
+      <div className="flex-1 min-w-[300px]">
+        <h2>Doughnut Chart Example</h2>
+        <Doughnut data={doughnutChartData} />
+      </div>
+    </div>
+
       <div className="w-full block 800px:flex items-center justify-between">
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
@@ -109,6 +182,7 @@ function DashboardHero() {
             <h5 className="pt-4 pl-2 text-[#077f9c]">Withdraw Money</h5>
           </Link>
         </div>
+
         {/*  */}
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">

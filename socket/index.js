@@ -101,6 +101,8 @@ io.on("connection", (socket) => {
   });
 
   //when disconnect
+  // nếu rời khỏi trang mà đã có const ENDPOINT = "http://localhost:4000/";
+// const socketId = socketIO(ENDPOINT, { transports: ["websocket"] }); thì tự động nó đi vào đây đi vào disconnect
   socket.on("disconnect", () => {
     console.log(`a user disconnected!`);
     removeUser(socket.id);

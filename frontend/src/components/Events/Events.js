@@ -19,7 +19,7 @@ function Events() {
           allEvents.length !== 0  ? (
             <EventCard active={true} data={allEvents && allEvents[0]} />
           ) : (
-            <EventCard active={true} data={null} />
+            <p></p>
           )
          }
          <h4>{

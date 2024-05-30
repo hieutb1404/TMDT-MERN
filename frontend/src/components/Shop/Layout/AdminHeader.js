@@ -5,6 +5,8 @@ import { MdOutlineLocalOffer } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { backend_url } from '~/server';
+import ShopMartial from '~/Assests/animations/shopmart.png';
+
 
 function AdminHeader() {
   const { user } = useSelector((state) => state.user);
@@ -13,11 +15,11 @@ function AdminHeader() {
     <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
         <Link to="/dashboard">
-          <img
-            src="https://cdn.shortpixel.ai/spai/q_lossy+w_153+h_46+to_webp+ret_img/vietnamisawesome.com/wp-content/uploads/2023/02/via-logo.svg"
-            alt=""
-            className="w-[160px] h-[70px]"
-          />
+        <img
+                src={ShopMartial}
+                alt=""
+                className="w-[100px] h-[70px]"
+              />
         </Link>
       </div>
 

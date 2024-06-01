@@ -288,7 +288,7 @@ const MessageList = ({
     >
       <div className="relative">
         <img
-          src={`${backend_url}/${userData?.avatar}`}
+          src={`${backend_url}/${user?.avatar}`}
           alt=""
           className="w-[50px] h-[50px] rounded-full"
         />

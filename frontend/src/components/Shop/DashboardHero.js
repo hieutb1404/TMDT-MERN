@@ -32,51 +32,53 @@ function DashboardHero() {
 
   const availableBalance = seller?.availableBalance.toFixed(2);
 // Chuyển đổi dữ liệu đơn hàng thành định dạng cho biểu đồ
-// const orderData = orders.map(order => ({
-//   date: new Date(order.createAt).toLocaleDateString(),
-//   amount: order.totalPrice,
-// }));
+const validOrders = Array.isArray(orders) ? orders : [];
 
-// const dates = orderData.map(data => data.date);
-// const amounts = orderData.map(data => data.amount);
+const orderData = validOrders.map(order => ({
+  date: new Date(order.createAt).toLocaleDateString(),
+  amount: order.totalPrice,
+}));
 
-// // Cấu hình dữ liệu cho các biểu đồ
-// const lineChartData = {
-//   labels: dates,
-//   datasets: [
-//     {
-//       label: 'Order Amount',
-//       data: amounts,
-//       fill: false,
-//       borderColor: 'rgb(75, 192, 192)',
-//       tension: 0.1,
-//     },
-//   ],
-// };
+const dates = orderData.map(data => data.date);
+const amounts = orderData.map(data => data.amount);
 
-// const barChartData = {
-//   labels: dates,
-//   datasets: [
-//     {
-//       label: 'Order Amount',
-//       data: amounts,
-//       backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//       borderColor: 'rgba(75, 192, 192, 1)',
-//       borderWidth: 1,
-//     },
-//   ],
-// };
+// Cấu hình dữ liệu cho các biểu đồ
+const lineChartData = {
+  labels: dates,
+  datasets: [
+    {
+      label: 'Order Amount',
+      data: amounts,
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1,
+    },
+  ],
+};
 
-// const doughnutChartData = {
-//   labels: dates,
-//   datasets: [
-//     {
-//       label: 'Order Amount',
-//       data: amounts,
-//       backgroundColor: dates.map(() => 'rgba(75, 192, 192, 0.2)'),
-//     },
-//   ],
-// };
+const barChartData = {
+  labels: dates,
+  datasets: [
+    {
+      label: 'Order Amount',
+      data: amounts,
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+    },
+  ],
+};
+
+const doughnutChartData = {
+  labels: dates,
+  datasets: [
+    {
+      label: 'Order Amount',
+      data: amounts,
+      backgroundColor: dates.map(() => 'rgba(75, 192, 192, 0.2)'),
+    },
+  ],
+};
 
   
 
@@ -151,7 +153,7 @@ function DashboardHero() {
     
   return (
     <div className="w-full p-8">
-    {/* <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
+    <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
     <div className="flex flex-wrap justify-between items-start gap-4">
       <div className="flex-1 min-w-[300px]">
         <h2>Line Chart Example</h2>
@@ -165,7 +167,7 @@ function DashboardHero() {
         <h2>Doughnut Chart Example</h2>
         <Doughnut data={doughnutChartData} />
       </div>
-    </div> */}
+    </div>
 
       <div className="w-full block 800px:flex items-center justify-between">
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
